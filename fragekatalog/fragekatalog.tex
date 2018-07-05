@@ -10,6 +10,9 @@
 \usepackage{parskip}
 % Anführungszeichen
 \usepackage{csquotes}
+% Für eingerückte Umgebungen
+\usepackage{changepage}
+\newcommand{\lmargin}{1.5em}
 \MakeOuterQuote{"}
 
 \title{Rechnernetze Uni Bremen Fragekatalog}
@@ -17,8 +20,37 @@
 \maketitle
 \section{Digitale Übertragung}
 \begin{enumerate}
-\item \textit{Was versteht man unter digitaler Übertragungstechnik?}\\
-\-\hspace{.5cm}Antwort hier einfügen
+\item \textit{Was versteht man unter digitaler Übertragungstechnik?}
+\begin{adjustwidth}{\lmargin}{0em}
+	Die Technik, die, in Abhängigkeit von Bittakt, Symbolrate, Übertragungsmedium etc., digitale Signale von A nach B transportiert. %TODO 'etc.'
+\end{adjustwidth}
+\item \textit{Skizziere einige Übertragungsverfahren zur digitale Übertragung von Bitfolgen.}
+\begin{adjustwidth}{\lmargin}{0em}
+	Siehe Manchestercode, NRZI etc. %TODO Zeichnung einfügen
+\end{adjustwidth}
+\item \textit{Was versteht man unter dem Begriff Bitsynchronisation}
+\begin{adjustwidth}{\lmargin}{0em}
+	Um ein korrektes Übertragen von digitale Signalen zu ermöglichen, muss gewährleistet sein, dass beide Parteien die selbe Taktrate verwenden. Die Synchronisation dieser Raten bezeichnet man als Bitsynchronisation.
+\end{adjustwidth}
+\item \textit{Welche grundsätzlich verschiedenen Verfahren zur Taktgewinnung können unterschieden werden?}
+\begin{adjustwidth}{\lmargin}{}
+\begin{itemize}
+	\item Nutzen einer seperaten Taktleitung, die abwechselnd im Takt hi und low sendet 
+	\begin{itemize}
+		\item Teuer
+		\item Die beiden Leitungen müssten exakt gleich lang sein
+	\end{itemize}
+	\item Kodieren von Bits über Flanken (z.B. Manchester-Code)
+	\begin{itemize}
+		\item Sehr hektisch
+	\end{itemize}
+	\item Verwenden von lokalen Uhren
+	\begin{itemize}
+		\item Regelmäßige Flanken müssen sichergestellt werden (z.B. durch NRZI-Code und/oder Synchronisationsbits)
+	\end{itemize}
+\end{itemize}
+\end{adjustwidth}
+\item \textit{}
 \end{enumerate}
 \section{Analoge Übertragung}
 
