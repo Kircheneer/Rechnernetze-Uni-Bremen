@@ -58,9 +58,69 @@ Bei der Übertragung kommt es zu einer Verzögerung zwischen Absenden und Empfan
 		\item Keine implizite Unterscheidung zwischen Daten und "Pause"
 	\end{itemize}
 \end{itemize}
+
+\item \textit{Welche Probleme müssen synchrone Verfahren ohne Taktleitung lösen?\\ Beschreibe Lösungsalternativen.}
+
+Im Gegensatz zu asynchronen Verfahren besteht bei synchronen Verfahren keine implizite Trennung von Datenübertragung und Pause. Dieses Problem kann z.B. dadurch gelöst werden, dass vor und nach der Übertragung von Daten ein Byte mit nur 1en gesendet wird. Vor und nach diesen Start- und Stop-Bits werden dann nur 0en gesendet. Anhand dieser Bits lassen sich Daten und Pause trennen und es besteht eine Möglichkeit zum Nachstellen lokaler Uhren.
 \end{enumerate}
 \section{Analoge Übertragung}
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item \textit{Was versteht man unter analoger Übertragungstechnik? Warum wird sie eingesetzt?}
 
+Analoge Signale sind Schwingungen, welche zwar in einfachen Formen technisch veraltet sind, in komplexeren Formen (z.B. im Telefon- oder Funknetz) aber weiterhin von Bedeutung sind.
+
+\item \textit{Was ist ein Modem?}
+
+Ein Modem wandelt digitale in analoge Signale und analoge in digitale Signale um. Sie werden benutzt, um digitale Signale für die Übertragung auf analogen Netzen aufzubereiten.
+
+\item \textit{Erläutere kurz die Grundzüge der Frequenz-, Amplituden- und Phasenmodulation.}
+
+\begin{itemize}
+\item Frequenzmodulation: Frequenz einer Schwingung entscheidet über Wert des Bits (hoch $\Rightarrow$ 1, niedrig $\Rightarrow$ 0)
+\item Amplitudenmodulation: Ausschlag einer Schwingung entscheidet über Wert des Bits (hoch $\Rightarrow$ 1, flach $\Rightarrow$ 0)
+\item Phasenmodulation: Beginn der Phase des Signals entscheidet über kodierten Bitwert (Visualisierung in Koordinatensystemen)
+\end{itemize}
+
+\item \textit{Wo ist der Unterschied zwischen den Maßeinheiten bit/s und baud?}
+
+Die Einheit \textit{baud} korrespondiert mit der Signal- und damit auch der Taktrate, währen die Einheit \textit{bit} mit der Übertragungsrate korrespondiert.
+
+\item \textit{Welche Bedeutung haben die Bezeichnungen "duplex", "halbduplex" und "simplex" bezogen auf ein physikalisches Übertragungsmedium?}
+
+\begin{itemize}
+\item Duplex $\Rightarrow$ Es können beide Richtungen gleichzeitig genutzt werden
+\item Halbduplex $\Rightarrow$ Es können beide Richtungen abwechselnd genutzt werden
+\item Simplex $\Rightarrow$ Es kann nur eine Richtung genutzt werden
+\end{itemize}
+
+\item \textit{Wie arbeiten Time Division Multiplexing (TDM), Frequency Division Multiplexing (FDM) und Echokompensation in etwa?}
+
+\begin{itemize}
+\item TDM $\Rightarrow$ Die Kommunikationsrichtung auf dem Medium wechselt in festgelegten zeitlichen Abschnitten
+\item FDM $\Rightarrow$ Verwendung verschiedener Frequenzen (vgl. Radiofunk)
+\item Echokompensation $\Rightarrow$ Verwendung der gleichen Frequenzen zum gleichen Zeitpunkt. Durch Kenntnis der eigenen gesendeten Daten können Überlagerungen wieder rausgerechnet werden
+\end{itemize}
+
+\item \textit{Warum sind die über ein Kommunikationsmedium ausgetauschten Signale nicht nur Nutzinformationen? Nenne Beispiele.}
+
+Es müssen auch Steuerinformationen wie z.B. der Takt, eine Unterscheidung zwischen Daten und Pause oder Richtungsumschaltungsnachrichten übertragen werden.\\
+
+\item \textit{Was ist ein Protokoll in diesem Zusammenhang?}
+
+Es regelt Steuerinformationen und somit die Absprache zwischen den beiden Kommunikationspartnern.
+
+\item \textit{Warum ist die Entwicklung von Standards im Bereich der Kommunikationssysteme so wichtig?}
+
+Da sonst Kommunikation zwischen Geräten verschiedener Hersteller nicht gewährleistet werden kann.
+
+\item \textit{Mit welchen internationalen Standardisierungsorganisationen hat man es hier hauptsächlich zu tun?}
+
+\begin{itemize}
+\item ISO (International Organization for Standardization; ISO xxxxx)
+\item ITU-TSS (International Telecommunications Union - Telecommunication Standards Sector; V.xxx, X.xxx, I.xxx)
+\end{itemize}
+\end{enumerate}
 \section{POTS und Modemanschluss}
 
 \section{Architekturmodelle -- OSI vs. Internet}
