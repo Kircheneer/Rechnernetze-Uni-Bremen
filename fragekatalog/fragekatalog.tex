@@ -122,7 +122,69 @@ Da sonst Kommunikation zwischen Geräten verschiedener Hersteller nicht gewährl
 \end{itemize}
 \end{enumerate}
 \section{POTS und Modemanschluss}
+\begin{enumerate}
+\setcounter{enumi}{16}
+\item \textit{Welche Arten von Festlegungen müssen bei einer physischen Kommunikationsschnittstelle	(wie z.B. der Modemschnittstelle) getroffen werden?}
 
+\begin{itemize}
+\item Elektrische Charakteristika
+\item Bedeutung der Schnittstellenleitungen
+\item Steckerform
+\item Protokollverhalten
+\end{itemize}
+
+\item \textit{Wie läuft ein verbindungsorientiertes Protokoll im Grundsatz ab?}
+
+\begin{itemize}
+\item Ruhepause
+\item Aufbau einer Kommunikationsbeziehung
+\item Übertragung von Nutzinformationen
+\item Abbau der Kommunikationsbeziehung
+\end{itemize}
+
+\item \textit{Was versteht man (in Zusammenhang mit verbindungsorientierten Protokollen) unter einer End-zu-End-Signifikanz des Verbindungsaufbaus bzw. unter einer Aufbaukollision?}
+
+\begin{itemize}
+\item End-zu-End-Signifikanz: %TODO
+\item Aufbaukollision: Ein Endsystem A möchte ein Verbindung mit B aufbauen. Zeitgleich bekommt A eine Anfrage von C. Jetzt kann C Daten an A senden, während A noch versucht, eine Verbindung mit B aufzubauen
+\end{itemize}
+
+\item \textit{Wie können Wahlinformationen für den Verbindungsaufbau über eine V.24-Schnittstelle übertragen werden?}
+
+\begin{itemize}
+\item Impulswahlverfahren (Unterbrechung des Gleitstromkreises)
+\item Mehrfrequenzwahlverfahren (Tonwahl, Kombination zweier Frequenzen auf dem Tastenfeld)
+\end{itemize}
+
+\item \textit{Was versteht man unter dem Begriff Bytesynchronisation?}
+
+Es werden ein Sender und ein Empfänger auf eine solche Art und Weise synchronisiert, dass beide Parteien die gleiche Datenrate verwenden, der Empfänger die gesendeten Bytes wieder als solche trennen kann und die Signale damit richtig interpretieren kann
+
+\item \textit{Auf welche Arten kann die Bytesynchronisation vorgenommen werden? Was ist Datentransparenz?}
+
+\begin{itemize}
+\item Asynchrone Bytesynchronisation: Implizite Bytesynchronisation, da jedes Byte durch Startbit idenzifiziert wird; Zähler bis 8, danach Stopbit(s)
+\item Synchrone Bytesynchronisation: Im laufenden Betrieb Zähler bis 8. Problem: Anfangssynchronisation:
+\begin{itemize}
+	\item Leitung für Bittakt (teuer)
+	\item Spezielles Bytesynchronisationsmuster auf der Datenleitung:
+	\begin{itemize}
+		\item ASCII: SYN-Zeichen
+		\item In Aufbauphasen bzw. am Nachrichtenanfang unproblematisch
+		\item in ASCII klar von Nutzinformationen getrennt
+		\item Aber: Nicht an beliebiger Stelle für beliebige Bitströme nutzbar $\Rightarrow$ Datentransparenz $\Rightarrow$ Lösung: HDLC-Flag (Klassisch wird asynchron genutzt)
+	\end{itemize}
+\end{itemize}
+\end{itemize}
+
+\item \textit{Auf welche grundsätzlich verschiedenen Arten können in einem Protokoll Steuerinformationen von Nutzinformationen unterschieden werden? Nenne Beispiele ihrer Anwendung.}
+
+\begin{itemize}
+\item Hayes-Code (zunächst proprietär) $\Rightarrow$ ADTD-Code *Nummer* (Attention Dial Tone Code)
+\item V.25bis $\Rightarrow$ Ähnlich, aber inkompatibel; hat sich nicht durchgesetzt
+\item V.25ter $\equiv$ Hayes-Code $\Rightarrow$ sehr vielfältig, auch Aufbaue, Abbau und Optionsaushandlung
+\end{itemize}
+\end{enumerate}
 \section{Architekturmodelle -- OSI vs. Internet}
 
 \section{Abschnittsicherungsschicht -- Konzepte}
