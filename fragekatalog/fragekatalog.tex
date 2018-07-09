@@ -230,11 +230,134 @@ Flusskontrolle ist Überlastschutz für den Empfänger.
 \end{enumerate}
 
 \section{Abschnittsicherungsschicht -- LAPB}
+\begin{enumerate}
+\item \textit{Wie werden bei der LAPB aufeinanderfolgende Frames getrennt?}
 
+Flags (01111110).
+
+\item \textit{Welche Aufgaben erfüllt das Bit-Stuffing? Wie funktioniert es?}
+
+Sicherstellen von Datentransparenz, indem potentielle Flags in den Nutzdaten verhindert werden. Immer wenn in den Nutzdaten fünf Einsen aufeinander folgen, wird eine 0 rein "gestufft".
+
+\item \textit{Wie wird bei der LAPB das Deadlock-Problem gelöst (der eine Kommunikationspartner wartet auf ein Frame, das möglicherweise zerstört wurde und daher nie ankommen wird)?}
+
+Timeout.
+
+\item \textit{Wie wird bei der LAPB auf einen erkannten Bitfehler reagiert? Warum?}
+
+Das Paket wird verworfen, um eine Protokollverwirrung durch ein fehlerhaftes Frame auszuschließen.
+
+\item \textit{Erläutere den Fenster-Mechanismus der LAPB. Was passiert (bei 3-Bit-Laufnummern) bei einer Fenstergröße von 1 bzw. von 8? Was wäre ein optimaler Wert für die Fenstergröße?}
+
+Zyklische Maximalanzahl von Paketen. Bei 1 gibt es Ping-Pong, bei 8 eine mögliche Fehlinterpretation. Ideal ist daher die 7.
+\end{enumerate}
 \section{Netztypen- und Topologien}
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item \textit{Was sind die wesentlichen Unterschiede zwischen Leitungsvermittlung und Paketvermittlung?}
 
+\begin{tabular}{c|c}
+Leitungsvermittlung&Paketvermittlung\\
+\hline
+Klassisch: Telefon&Klassisch: Briefpost\\
+Verbindungsaufbau und -reservierung $\Rightarrow$ garantierte Kapazitäten&"Best Effort"\\
+Übertragung von Bitströmen&Übertragung von Paketen\\
+Sequenzerhaltend&Nicht Sequenzerhaltend\\
+Kein Abschnittsicherungs-Layer&Abschnittsicherungs-Layer\\
+\end{tabular}
+
+\item \textit{Welche zwei Arten der Paketvermittlung werden unterschieden? Worin unterscheiden sie sich?}
+
+Verbindungslose und verbindungsorientierte. Bei verbindungsorientierter Paketvermittlung bleibt die Sequenz erhalten.
+
+\item \textit{Welche Netztopologien kann man unterscheiden?}
+
+Vollständiger Vermaschung, Ring, Stern, Bus, allgemeines Netz etc.
+
+\item \textit{Welche Kriterien kann man zum Vergleich von Netztopologien heranziehen?}
+
+\begin{itemize}
+\item Störanfälligkeit
+\item Schwierigkeit der Wegewahl
+\item Broad- bzw. Multicastfähigkeit
+\item Aufwand bzw. Kosten
+\item Sicherheit
+\item Medienzugang
+\end{itemize}
+
+\item \textit{Nenne kurz Vor- und Nachteile verschiedener Netztopologien.}
+
+Siehe Tabelle in den Folien.
+
+\item \textit{Auf welche verschiedenen Arten kann der Netzzugang geregelt werden?}
+\begin{itemize}
+\item CSMA-CD
+\item Token
+\item Senderecht
+\item Zeitslots
+\item ALOHA
+\item Store and Forward
+\item FDM
+\item Zellenstruktur
+\end{itemize}
+
+\item \textit{Skizziere die grundsätzliche Funktionsweise von Tokenringen.}
+
+Der Token entspricht dem "Sprechball" in einem Gesprächskreis.
+
+\item \textit{Skizziere einige Probleme, die beim Betrieb von Tokenringen auftreten können.}
+\begin{itemize}
+\item Sobald eine Leitung kaputt ist, fällt der ganze Ring aus
+\item Monopolisierung des Tokens
+\item Defekt des Tokens
+\item Vervielfältigung des Tokens
+\end{itemize}
+
+\item \textit{Welche besonderen Eigenschaften weist Satelliten-Kommunikation auf?}
+\begin{itemize}
+\item Teuer
+\item Wetterabhängig
+\item Hohe Latenz
+\item Stern mit Broadcast
+\end{itemize}
+\end{enumerate}
 \section{Klassisches Ethnernet vs. FDDI}
+\begin{enumerate}
+\setcounter{enumi}{14}
+\item \textit{Welche Aufgaben hat die Teilschicht MAC bei lokalen Netzen?}
 
+Adressierung, Medienzugriff, Framing, Bittakt und Fehlererkennung
+
+\item \textit{Auf welcher Topologie basieren "klassische" Ethernet-Varianten?}
+
+Bus.
+
+\item \textit{Welches Zugangsverfahren wurde im klassischen Ethernet verwendet? Inwiefern ist dies noch heute relevant?}
+
+CSMA-CD, heute Store-and-Forward.
+
+\item \textit{Was ist der Unterschied zwischen CSMA und CSMA/CD?}
+\begin{itemize}
+\item CSMA $\Rightarrow$ Horchen, ob auf der Leitung gesendet wird.
+\item CSMA/CD $\Rightarrow$ Während des Sendens weiterhorchen
+\end{itemize}
+
+\item \textit{Wie wird eine entstandene Kollision bei CSMA bzw. CSMA/CD in etwa wieder aufgelöst?}
+
+Man wartet eine Zufallszeit, bis man wieder horcht.
+
+\item \textit{Warum hält eine klassische Ethernet-Station beim Aussenden eines Paketstroms einen Mindestabstand zwischen den Paketen ein?}
+
+Fairness beim Senden.
+
+\item \textit{Welche Aufgaben haben jeweils Repeater/Hubs, non-intelligent Bridges, Learning Bridges/Switches und Router?}
+\begin{itemize}
+\item Repeater/Hub $\Rightarrow$ Verstärken und transparentes Weiterleiten der Signale
+\item non-intelligent Bridgers $\Rightarrow$ Wie Repeater/Hub, aber sendet nur, wenn Leitung frei
+\item Learning Bridges/Switches $\Rightarrow$ Erkennt Pakete und leitet nur dorthin weiter, wo Paket hingehört
+\item Router $\Rightarrow$ Netzkopplung, netzübergreifende Addressierung, Wegewahl
+\end{itemize}
+\end{enumerate}
 \section{Übertragungsmedien -- Kupfer vs. Glas}
 
 \section{Lokale Netze -- Ethernet heute}
