@@ -186,8 +186,48 @@ Es werden ein Sender und ein Empfänger auf eine solche Art und Weise synchronis
 \end{itemize}
 \end{enumerate}
 \section{Architekturmodelle -- OSI vs. Internet}
+\begin{enumerate}
+\setcounter{enumi}{23}
+\item \textit{Wie laufen Kommunikationsbeziehungen über eine Hierarchie von Protokollen ab?}
 
+Protokolle höherer Schichten sehen den Dienst der unteren Schichten als Blackbox an und bauen darauf auf. Die einzige tatsächlich Kommunikation findet stets zwischen den beiden niedrigsten Schichten statt.
+
+\item \textit{Erkläre den Begriff des Dienstes einer Schicht. Wie grenzt er sich gegenüber dem Protokoll-Begriff ab?}
+
+Der Dienst einer Schicht ist die Leistung, die sie der jeweils höheren Schicht bereitstellt. Ein Protokoll auf der Schicht ist eine spezielle Art und Weise, diese Leistung zu erbringen.
+
+\item \textit{Vergleiche die Architekturmodelle von OSI und Internet. Wo sind Gemeinsamkeiten und	Unterschiede?} 
+
+Im OSI-Modell gibt es 7 Schichten, im Internet-Modell nur 4 (keine Presentation, Session, Subnetzlayer zusammengefasst). Außerdem folgten bei OSI die Protokolle auf das Modell, beim Internet-Modell andersrum.
+\end{enumerate}
 \section{Abschnittsicherungsschicht -- Konzepte}
+\begin{enumerate}
+\setcounter{enumi}{26}
+\item \textit{Welche Aufgaben hat die Abschnittsicherungssicht}
+\begin{itemize}
+\item Geben eines Bytetaktes
+\item Bewahren von Informationseinheiten (Frames)
+\item Fehlersichere Übertragung
+\item Schutz vor Überlastung
+\item In der Regel Datentransparenz
+\item Gegebenfalls Medienzugang
+\end{itemize}
+\item \textit{Wie arbeitet das CRC-Verfahren in etwa?}
+
+Mit einem Generatorpolynom des Grades n wird die zu sendende Nachricht um n Nullen erweitert. Diese Nullen werden dann mittels XOR-Verknüpfungen zu Prüfbits abgewandelt. Durch "Division" der Nachricht durch das Generatorpolynoms kann der Empfänger jetzt feststellen, ob es Übertragungsfehler gab.
+
+\item \textit{Wie arbeiten klassische Fehlerbehebungsverfahren?}
+
+Der Empfänger kann nur feststellen, dass es einen Übertragungsfehler gab, diesen aber nicht beheben. Der Empfänger muss also beim Sender anfragen, die Daten nochmal zu erhalten. Nach so einer Anfrage oder einem Timeout sendet der Sender die Daten dann erneut. Die bereits gesendet Daten müssen beim Sender also bis zu einer Empfangsbestätigung gepuffert werden.
+
+\item \textit{Was ist Flusskontrolle? Wie arbeiten klassische Flusskontrollverfahren?}
+
+Flusskontrolle ist Überlastschutz für den Empfänger.
+\begin{itemize}
+\item Explizit $\Rightarrow$ Explizites Bremsen, Senden eines "Stop" statt "o.k.", Aufheben mit "Go"
+\item Implizit $\Rightarrow$ Herauszögern der Bestätigung, sobald der Puffer voll ist, kann nicht mehr gesendet werden
+\end{itemize}
+\end{enumerate}
 
 \section{Abschnittsicherungsschicht -- LAPB}
 
